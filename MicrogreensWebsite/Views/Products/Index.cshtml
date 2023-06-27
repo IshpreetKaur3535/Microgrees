@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MicrogreensWebsite.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br></br>
+<p>
+    <a asp-action="Create">
+        <input type="submit" class="btn btn-success" value="Add New Product">
+    </a>
+</p>
+
+
+
+<table class="table text-dark table-hover" style=" border: 1px solid black; border-radius: 10px;" >
+    <thead>
+        <tr style="background-color:lightgreen ">
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th style =" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.ProductSuppliedDate)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.Price)
+            </th >
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.IsInStock)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.IsOnSale)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.Farmer)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;" ></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="text-dark">
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+                <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+                <td style=" border: 1px solid black; border-radius: 10px;">
+                    @*<img src="<img src="\images\broccoli1.jpg" />" width="100" , height="100" />
+                *@
+
+                    <img src="@Url.Content(item.ProductImage)" height="150" , width="150">
+
+            </td style=" border: 1px solid black; border-radius: 10px;">
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.ProductSuppliedDate)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.IsInStock)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.IsOnSale)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.Farmer.FarmerName)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+                <a asp-action="Edit" asp-route-id="@item.ProductID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductID">Detail</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductID">Delete </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

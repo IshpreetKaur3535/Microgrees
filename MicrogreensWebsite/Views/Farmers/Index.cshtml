@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MicrogreensWebsite.Models.Farmer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br></br>
+<p>
+    <a asp-action="Create">
+        <input type="submit" class="btn btn-success text-dark" value="Add New Farmer">
+    </a>
+</p>
+ 
+<table class="table text-dark table-hover" style="border: 1px solid black; border-radius: 10px">
+    <thead>
+        <tr style="background-color:lightgreen ">
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.FarmerName)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.FarmerEmail)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayNameFor(model => model.FarmerAddress)
+            </th>
+            <th style=" border: 1px solid black; border-radius: 10px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="text-dark">
+                <td style="border: 1px solid black; border-radius: 10px ">
+                @Html.DisplayFor(modelItem => item.FarmerName)
+            </td>
+            <td style="border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.FarmerEmail)
+            </td>
+                <td style=" border: 1px solid black; border-radius: 10px;">
+                @Html.DisplayFor(modelItem => item.FarmerAddress)
+            </td>
+            <td style=" border: 1px solid black; border-radius: 10px;">
+
+                <a asp-action="Edit" asp-route-id="@item.FarmerID">
+                        <input type="submit" class="btn btn-success text-dark" value="Edit">
+                </a> |
+                <a asp-action="Details" asp-route-id="@item.FarmerID">
+                        <input type="submit" class="btn btn-success text-dark" value="Detail">
+                </a> |
+                <a asp-action="Delete" asp-route-id="@item.FarmerID">
+                        <input type="submit" class="btn btn-success text-dark" value="Delete">
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

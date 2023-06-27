@@ -1,0 +1,44 @@
+﻿@model MicrogreensWebsite.Models.Farmer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Farmer</h1>
+
+
+<hr />
+<div class="row text-dark">
+    <div class="col-md-4 text-dark">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FarmerID" />
+            <div class="form-group">
+                <label asp-for="FarmerName" class="control-label"></label>
+                <input asp-for="FarmerName" class="form-control" />
+                <span asp-validation-for="FarmerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerEmail" class="control-label"></label>
+                <input asp-for="FarmerEmail" class="form-control" />
+                <span asp-validation-for="FarmerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerAddress" class="control-label"></label>
+                <input asp-for="FarmerAddress" class="form-control" />
+                <span asp-validation-for="FarmerAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success text-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
